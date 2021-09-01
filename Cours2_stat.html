@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Cours2_stat.knit</title>
+    <meta charset="utf-8" />
+    <script src="assets/kePrint-0.0.1/kePrint.js"></script>
+    <link href="assets/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/theme_flo.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/mtheme.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/fonts_mtheme.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/tools.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+class: center, middle, inverse, title-slide, animated, fadeIn
+# Cartographie et statistique M1 2021-2022
+# Cours n°2- Les données statistiques en cartographie &lt;br /&gt; &lt;br /&gt;
+### Florian Bayer
+
+&lt;img src="./assets/css/logo_p1_col.jpg" STYLE="position:absolute; BOTTOM:20px; RIGHT:5px; WIDTH:15%;  "/&gt;
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## Objectifs du cours
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+Rappels du précédent cours :
+
+- Les cartes thématiques combinent localisation (x;y) et **données** (z)
+- Pour transmettre de l'information, le cartographe s'appuie sur les **règles** de la sémiologie graphique (cours 3)
+- Ces **règles** dépendent du type de **données** à cartographier
+
+Outre la représentation graphique, le type de données est très important en statistique : les méthodes ne seront pas les mêmes pour caractériser le prénom le plus fréquemment données en 2019 ou pour déterminer l'âge moyen de la population française. 
+
+--
+
+Les objectifs de ce cours sont donc :
+
+- de réviser le **vocabulaire** portant sur les données en cartographie et en statistique
+- d'apprendre à **reconnaitre** les différents types de données et de tableaux
+
+---
+## L’information géographique
+
+Le géographe a pour particularité de s’intéresser aux **lieux** auxquels sont rattachés les données.
+- Une information non localisable a donc peu d’intérêt pour le géographe
+
+Le cartographe utilise donc de l’**information géographique**, c’est-à-dire localisable dans l’espace : 
+- Par des coordonnées 
+- Par une appartenance à un lieu, à un maillage	
+
+Ces appartenances ont un intérêt si elles peuvent être **caractériser** :
+- À une commune peut être associée sa population totale ou sa densité 
+
+Si la collecte de l’information géographique peut parfois être laborieuse, son analyse peut se faire avec les mêmes outils qu’en statistique. 
+
+---
+class: animated, fadeIn
+## Les données en cartographie
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+Les données utilisées en cartographie proviennent de multiples sources (*recensement, sondage,images satellites etc.*) et peuvent être **caractérisées** (première partie du cours) :
+
+.center-img[.pull-left[
+Données qualitatives
+&lt;img src="./images/2-Stat/Quali.png" width="90%" /&gt;
+]
+
+.pull-right[
+Données quantitatives
+&lt;img src="./images/2-Stat/Quanti.png" width="70%" /&gt;
+]]
+
+---
+class: animated, fadeIn
+## Les données en cartographie
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+Les données peuvent être récupérer par le cartographe sous forme de tableaux (*i.e. INSEE*), ou bien issues de différentes sources (livres, articles, pixels).
+
+Il est nécessaire pour le cartographe de **restructurer** ces données, le plus souvent sous la forme d'un nouveau tableau. Les différents types de tableaux seront abordés dans la seconde partie du cours.
+
+---
+## Schéma de production cartographique
+
+.zoom[ .center-img[
+&lt;img src="./images/1_Message/Image19.png" width="100%" /&gt;
+] ]
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: inverse, center, middle, animated, fadeIn  
+# 1- Les données en cartographie
+
+&lt;img src="./assets/css/graticules.png" STYLE="position:absolute; BOTTOM:30px; RIGHT:0px; WIDTH:150%;"/&gt;
+&lt;div class="my-footer-title "&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## Rappels de vocabulaire : statistique
+
+Avant de définir les grands types de données, il est nécessaire de rappeler le vocabulaire commun aux données
+
+**La statistique** : 
+- l'ensemble de techniques et d'outils mathématiques permettant d'analyser des données
+
+**Les statistiques** : 
+- les données textes ou chiffres (alphanumériques) décrivant une population, un ensemble
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## Rappels de vocabulaire : population
+
+La **population** ou **l’ensemble** :
+- La collection (l’ensemble) des données qui vont servir à créer votre carte.
+- En géographie cet ensemble est très rarement infini
+- On parlera souvent de série statistique pour les données quantitatives
+
+___
+.center-img[
+.pull-left[
+Ensemble des unités statistiques étudiées : les pays européens
+&lt;img src="./images/2-Stat/Europe.png" width="100%" /&gt;
+]
+
+.pull-right[
+Mais la population peut aussi correspondre à des personnes : 
+&lt;img src="./images/2-Stat/simpson.png" width="100%" /&gt;
+]]
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## Rappels de vocabulaire : élément
+
+L'**élément** ou l’individu
+- Un objet constitutif de l'ensemble
+___
+.center-img[
+
+.pull-left[
+La Belgique est un élément de l'ensemble des pays europééns
+&lt;table class="table table-striped table-hover table-condensed table-responsive" style=""&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; iso_a3 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Nom &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Continent &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; ALB &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Albania &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; AUT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Austria &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: #D7261E !important;"&gt; BEL &lt;/td&gt;
+   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: #D7261E !important;"&gt; Belgium &lt;/td&gt;
+   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: #D7261E !important;"&gt; Europe &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; BGR &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Bulgaria &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; BIH &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Bosnia and Herz. &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+Flanders est un individu de l'ensemble des personnages des Simpsons
+&lt;img src="./images/2-Stat/flanders.gif" width="50%" /&gt;
+]]
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## Rappels de vocabulaire : caractère
+
+Le **caractère**
+- Les éléments d’un ensemble sont décrits par un caractère.
+___
+.center-img[
+.pull-left[
+Chaque pays peut-être caractérisé par son code, son nom, sa superficie, sa population
+&lt;table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 10px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; iso_a3 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Nom &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Continent &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Superficie &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Population &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+De même que des personnes (Nom, prénom, age, sexe, adresse etc.)
+&lt;table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 10px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Nom &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Prénom &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Age &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Sexe &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Adresse &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]]
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+
+---
+class: animated, fadeIn
+
+## Rappels de vocabulaire : modalité / valeur
+
+La **modalité**, la **valeur**
+- La valeur descriptive du caractère
+  * modalité pour les données qualitatives
+  * valeur pour les données quantitatives
+
+___
+.center-img[
+.pull-left[
+La valeur de la population Belge est de 10,4 millions d'habitants. La modalité de son code iso est BEL
+&lt;table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 10px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; iso_a3 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Nom &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Continent &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Superficie &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Population &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; BEL &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Belgium &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 30280 [km^2] &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10414336 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+Flanders a 60 ans et est un homme. Il réside au 744 Evergreen Terrace, Springfield, USA
+&lt;table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 10px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Nom &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Prénom &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; age &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Sexe &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; adresse &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Flanders &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ned &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 60 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 744 Evergreen Terrace, Springfield, USA &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]]
+
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+## Données quantitatives et qualitatives
+On peut caractériser les données en deux grands types, eux mêmes disposant de sous-caractéristiques. 
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+.pull-left[
+Les données **qualitatives** :
+caractérise la nature de ce qui est décrit et non la quantité. 
+- Un nom
+- Une couleur
+- Le type de sol
+]
+
+--
+
+.pull-right[
+Les données  **quantitatives** :
+Caractérise une quantité, par définition mesurable
+- Une population 
+- Un taux de chômage
+- Une densité
+- L'IDH
+]
+
+---
+## Quantitatives et qualitatives ?
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+Il est important de pouvoir justifier le type de données :
+
+.pull-left[
+- Si la moyenne est impossible ou absurde : qualitatif (code départementaux, numéro de téléphone)
+- Si la moyenne a un sens : quantitatif (population, température)
+]
+
+--
+
+.center-img[
+.pull-right[
+&lt;img src="./images/2-Stat/quanti_quali.png" width="100%" /&gt;
+]]
+
+---
+## Les sous types de données qualitatives
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+Les données qualitatives peuvent avoir d'autres propriétés, importantes en cartographie et en statistique
+
+.pull-left[
+Qualitatif **nominal** : contient une notion de différence, aucun ordre
+- Codes départementaux
+- Des prénoms
+- Des numéros étudiants
+*v.s.*
+
+Qualitatif **ordinal**: contient une notion d'ordre sans être mesurable
+- Une classification : grand &gt; moyen &gt; petit
+- Le stade d’une maladie : 1 :) / 2 :| / 3 :(
+]
+
+--
+
+.pull-right[
+Qualitatif **discret** : il y a moins de modalités que d'éléments. 
+- Le statut des hôpitaux : CHU, CHR, CH (3 statuts, 6 000 hôpitaux)
+- Le statut des communes : Capitale, préfecture, sous préfecture
+
+*v.s.*
+
+Qualitatif **exhaustif**: il y a autant de modalités que d'éléments
+- Le nom des pays, des régions
+- Un code
+]
+
+---
+## Les sous types de données quantitatives
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+Les données **quantitatives** peuvent aussi avoir d'autres propriétés, toutes aussi importantes en cartographie et en statistique
+
+.pull-left[
+Quantitatif de **stock** : une quantité brute, un effectif. 
+- La population
+- Une production en tonne
+
+*v.s*
+
+Quantitatif de **taux**: un rapport, un indice. 
+- La densité de population
+- Le taux de chômage
+- L'IDH
+]
+
+---
+## Stock ou taux ?
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+.pull-left[
+Comment faire la différence entre stock et taux ? 
+- Si la somme a une signification : stock (la somme de la population des pays du monde = la population mondiale)
+- Si la somme n'a pas de sens : taux (la somme du taux de chômage des pays du monde ne correspond pas au taux de chômage mondial)
+
+Attention, ce n’est pas parce que la valeur contient une virgule qu’il s’agit d’une données de taux :
+- la France à une population de 66,6 millions d’habitants en 2016
+]
+
+--
+
+.center-img[
+.pull-right[
+&lt;img src="./images/2-Stat/taux_stock.png" width="100%" /&gt;
+]]
+
+
+---
+## Les sous types de données quantitatives
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+.pull-left[
+Quantitatif **repérable** : le zéro est conventionnel
+- L'altitude
+
+*v.s.*
+
+Quantitatif **mesurable**: le zéro signifie l'absence concrète
+- Le taux de chômage
+- La population
+]
+
+--
+
+.pull-right[
+Quantitatif **discret** : une variable discrète a un nombre fini ou dénombrable (qu’on peut compter) de valeurs possibles. Elles sont distinctes et séparées, aucune valeur intermédiaire n’est possible : 
+- Le nombre d’étudiants dans cette salle de cours à ce moment de la journée
+- Les pointures de chaussures
+
+*v.s.*
+
+Quantitatif **continu**: il y a un nombre illimité de valeurs (non dénombrables). Entre deux valeurs distinctes, il y a toujours une valeur intermédiaire possible : 
+- Le taux de chômage 
+- La vitesse du vent
+]
+
+On peut transformer une donnée continue en donnée discrète en classant les valeurs dans des classes `\(\Rightarrow\)` discrétisation
+
+---
+## En résumé
+
+.zoom[ .center-img[
+&lt;img src="./images/2-Stat/Caractere.png" width="90%" /&gt;
+] ]
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+## Exercice
+Caractérisez le plus précisément possible les 7 caractères du tableau suivant. Justifiez vos choix.
+&lt;table class="table table-striped table-hover table-condensed table-responsive" style=""&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; iso_a3 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Nom &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Continent &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Superficie &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Population &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Densité_Population &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Type_Economie &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; AFG &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Afghanistan &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 652860.00 [km^2] &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28400000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 43.5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 7. Least developed region &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; AGO &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Angola &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Africa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1246700.00 [km^2] &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12799293 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 7. Least developed region &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; ALB &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Albania &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 27400.00 [km^2] &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3639453 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 132.8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 6. Developing region &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; ARE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; United Arab Emirates &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 71252.17 [km^2] &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4798491 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 67.3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 6. Developing region &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; ARG &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Argentina &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; South America &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2736690.00 [km^2] &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 40913584 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15.0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 5. Emerging region: G20 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+
+---
+## Exercice - correction
+
+- iso_a3	: qualitatif (moyenne impossible), nominal (pas d'ordre), exhaustif (autant de modalité que d'éléments)
+- Nom : qualitatif (moyenne impossible), nominal (pas d'ordre), exhaustif (autant de modalité que d'éléments)
+- Continent : qualitatif (moyenne impossible), nominal (pas d'ordre), discret (moins de modalité que d'éléments)
+- Superficie : quantitatif (moyenne à un sens), stock (somme à un sens), continu (infinité de valeurs), mesurable (0 = absence)
+- Population : quantitatif (moyenne à un sens), stock (somme à un sens), discret (dénombrable), mesurable (0 = absence)
+- Densité Population : quantitatif (moyenne à un sens), taux (somme n'à pas de sens), continu (infinité de valeurs), mesurable (0 = absence)
+- Type Economie : qualitatif (moyenne impossible), nominal (pas d'ordre), discret (moins de modalité que d'éléments)
+
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: inverse, center, middle, animated, fadeIn  
+#2- Les différents types de tableaux
+&lt;img src="./assets/css/graticules.png" STYLE="position:absolute; BOTTOM:30px; RIGHT:0px; WIDTH:150%;"/&gt;
+&lt;div class="my-footer-title "&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## Rappels
+
+Il existe de nombreux type de tableaux en statistique. Leur forme peut dépendre entre autre:
+- Du type de données en amont (comment ont elles été recueillies ?)
+- De la manière dont vous souhaitez analyser vos données (regroupements ?)
+- La manière de mettre en forme les tableaux et les variables est un métier à part dans l’entreprise (data manager)
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## Tableau élémentaire de données
+
+.pull-left[
+C'est le cas le plus courant. Il décrit un ensemble d’éléments (lignes du tableau) à l’aide d’un ensemble de caractères (colonnes du tableau).
+- La première colonne est généralement réservée à un caractère servant d’identifiant. 
+- On note *i* un élément quelconque du tableau et *Xi* la " modalité prise par l’élément *i* pour le caractère *X*. "
+- En géographie on parlera de **tableau d'information géographique**
+]
+
+.pull-right[
+&lt;table class="table table-striped table-hover table-responsive" style="font-size: 15px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Etudiant &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; groupe &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; UFR &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #C2513E !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #2079BE !important;"&gt;GEO&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #C2513E !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #2079BE !important;"&gt;GEO&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #FFA500 !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #2079BE !important;"&gt;GEO&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #FFA500 !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #FFA500 !important;"&gt;HIST&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; E &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #196620 !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #FFA500 !important;"&gt;HIST&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #196620 !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #2079BE !important;"&gt;GEO&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; G &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #196620 !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #FFA500 !important;"&gt;HIST&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## Tableau de contingence
+
+C'est un cas particulier de tableau élémentaire :
+- les lignes et les colonnes jouent un rôle symétrique 
+- le contenu des cases correspond à des effectifs qui peuvent être sommés en ligne et en colonne.
+- On peut parfois calculer des moyennes ou tout autre indicateur statistique si les données le permettent
+
+Tout tableau de contingence est le résultat de la transformation d’un tableau élémentaire constitués de deux caractères discrets X et Y décrivant le même ensemble E
+
+Le nombre de ligne d’un tableau de contingence (k) correspond au nombre de modalités du premier caractère discret (X) et le nombre de colonnes (p) correspond au nombre de modalités du second caractère discret (Y)
+
+L’effectif d’une case, noté Nij, correspond au " nombre d’éléments du tableau élémentaire E qui prennent simultanément la modalité i de X et la modalité j de Y ".
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## Tableau de contingence
+
+.pull-left[
+Tableau élémentaire de données
+&lt;table class="table table-striped table-hover table-responsive" style="font-size: 15px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Etudiant &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; groupe &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; UFR &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #C2513E !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #2079BE !important;"&gt;GEO&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #C2513E !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #2079BE !important;"&gt;GEO&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #FFA500 !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #2079BE !important;"&gt;GEO&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #FFA500 !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #FFA500 !important;"&gt;HIST&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; E &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #196620 !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #FFA500 !important;"&gt;HIST&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #196620 !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #2079BE !important;"&gt;GEO&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; G &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #196620 !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #FFA500 !important;"&gt;HIST&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+Transformé en tableau de contingence
+&lt;table class="table table-striped table-hover table-responsive" style="font-size: 15px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; UFR.x.Grp &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GEO &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; HIST &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Total &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Total &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## Tableau disjonctif complet
+
+C'est le résultat de l'éclatement d'un tableau élémentaire contenant des modalités
+- Les variables sont codées en 0 ou 1 pour l'absence/présence d'un caractère
+- On l'utilise pour certaines analyses spécifiques (analyses factorielles)
+- Ils sont de retour en grâce avec le machine learning
+
+
+
+.pull-left[
+Tableau élémentaire de données
+&lt;table class="table table-striped table-hover table-responsive" style="font-size: 15px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Etudiant &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; groupe &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; UFR &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #C2513E !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #2079BE !important;"&gt;GEO&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #C2513E !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #2079BE !important;"&gt;GEO&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #FFA500 !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #2079BE !important;"&gt;GEO&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #FFA500 !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #FFA500 !important;"&gt;HIST&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; E &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #196620 !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #FFA500 !important;"&gt;HIST&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #196620 !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #2079BE !important;"&gt;GEO&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; G &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #196620 !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     color: #FFA500 !important;"&gt;HIST&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+Transformé en tableau disjonctif complet
+&lt;table class="table table-striped table-hover table-responsive" style="font-size: 15px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; groupe.1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; groupe.2 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; groupe.3 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; UFR.GEO &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; UFR.HIST &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; E &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; G &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+
+---
+class: animated, fadeIn
+## Tableau d’échanges
+
+On partle aussi de matrix de flux
+- Il contient des individus géographiques en ligne et en colonne, qui peuvent ou non être identiques
+- Un tableau ne peut représenter qu'un seul caractère, par exemple les flux de population entre les individus
+- Si le tableau d'échanges n'est pas symétrique, il se lit de la ligne vers la colonne
+
+&lt;table class="table table-striped table-hover table-responsive" style="font-size: 15px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Aéroports &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Paris &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Berlin &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Londres &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Paris &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; - &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Berlin &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; - &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Londres &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; - &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: inverse, center, middle, animated, fadeIn  
+#3- Les logiciels ?
+&lt;img src="./assets/css/graticules.png" STYLE="position:absolute; BOTTOM:30px; RIGHT:0px; WIDTH:150%;"/&gt;
+&lt;div class="my-footer-title "&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## Les logiciels en statistique
+
+Il existe de **nombreux** outils informatiques pour réaliser des calculs statistiques et faire des graphiques.   
+
+Ils vous **aident dans les calculs** et permettent d'automatiser des tâches de manière efficace et **reproductible.**   
+
+Ils ne servent néanmoins à rien si vous ne connaissez pas les méthodes utilisées par ces logiciels :   
+- Réaliser une ACP avec Philcarto sans maitriser les principes de cette méthode va forcément aboutir à un résultat faux, malgré une jolie carte
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## Les logiciels en statistique
+
+Pour éviter cet effet **boite noire**, nous verrons durant le semestre le fonctionnement et les principes de chaque méthode statistique, sans pour autant rentrer dans le détail des définitions mathématiques. 
+
+Retenez que votre plus value dans votre parcours universitaire **n’est pas de savoir appuyer sur un bouton** pour lancer un calcul, mais :
+- de choisir la méthode la plus appropriée pour tester une hypothèse
+- d’adapter vos outils au contexte de l’étude et du besoin initial
+- de recueillir les résultats
+- de les analyser et de les interpréter
+- de les restituer de façon intelligible à votre public
+
+Les diapositives suivantes listent quelques outils qui pourraient vous aider en statistique.
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+
+---
+class: animated, fadeIn
+## Les tableurs : Excel, Libre Office, Open Office
+
+Ils permettent de mettre en page des données et de réaliser quelques analyses statistiques, essentiellement univariées (analyse d’une variable à la fois), mais pas seulement.
+- Créer et déplacer des colonnes d’un tableau élémentaire de données
+- Faire des calculs simple (Colonne C = Colonne A / Colonne B * 100)
+- Faire des fonctions plus complexe (si, alors, jointure)
+- Passer d’un tableau élémentaire à un tableau de contingence
+- Faire des graphiques
+- Quelques outils bivariées et multivariées
+- Quelques tests statistiques
+
+Ils sont très **communs** et **faciles à manipuler**, mais ne permettent pas de traiter de gros volumes de données (sans devenir des usines à gaz). Ils sont néanmoins très pratique pour mettre en page un petit volume de données.
+
+Ils proposent souvent un langage de programmation pour **automatiser** certaines tâches, mais la reproductibilité d’un calcul par exemple n’est pas toujours évidente si vous utilisez uniquement le clic – bouton.
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## SAS
+
+.pull-left[
+
+.font90[
+SAS est un logiciel très populaire en entreprise et dans le milieu scientifique pour réaliser des analyses statistiques. 
+
+Outre des analyses statitiques, il permet de faire du **data management** de manière efficace et rapide (traitement des données avant les études, vérification de la qualité des données, imputation de données manquantes etc.).
+
+Il est basé sur un langage qui lui est propre, mais loin des standards de 2020. Cela permet néanmoins de relancer facilement une analyse sur différent jeux de données. Une nouvelle version, **SAS Guide**, permet d’utiliser SAS sans maitriser les bases de la programmation informatique.
+
+Les méthodes proposées dans SAS sont toujours validées par des scientifiques, mais parfois plusieurs années après leur publication.
+]]
+
+
+.pull-right[
+&lt;img src="./images/2-Stat/sas_1.PNG" width="80%" /&gt;
+
+&lt;img src="./images/2-Stat/sas_2.png" width="80%" /&gt;
+]
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## SAS
+
+.center-img[
+&lt;img src="./images/2-Stat/sas_3.png" width="80%" /&gt;
+]
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## R
+
+.pull-left[
+
+.font90[
+R est un autre logiciel très populaire. Contrairement à SAS, il est gratuit et possède une communauté très développée, qui offre régulièrement de nouvelle fonctionnalité
+téléchargeable (**packages**). 
+
+Cela peut poser problème lorsqu’un package que vous utilisez depuis longtemps n’est plus maintenu ou s’avère contenir une erreur (rare). Néanmoins pour une utilisation un peu plus avancée, il ne faut pas avoir peur de sonder des forums et installer, désinstaller, réinstaller des bibliothèques spéciques sur vos ordinateurs...
+
+Utiliser R nécessite de "programmer". Ce langage à l'avantage d'être simple d’accès mais est une hérésie pour certains utilisateurs (dont votre enseignant aujourd'hui). A noter que vous pouvez faire du SIG, des cartes ou encore écrire votre mémoire avec R. Cette présentation est faite avec R.
+]]
+
+.pull-right[
+&lt;img src="./images/2-Stat/R_1.png" width="100%" /&gt;
+]
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## R
+
+&lt;img src="./images/2-Stat/R_2.png" width="100%" /&gt;
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+
+---
+class: animated, fadeIn
+## Python
+
+Il ne s’agit pas d’un logiciel de statistique en soit, mais d’un langage de programmation très populaire. Il est utilisé dans l’automatisation de tâches en informatique, pour la domotique, mais aussi en statistique. C’est un langage **facile à apprendre**, souvent enseigné au collège/lycée pour apprendre la programmation.
+
+Comme R, des librairies peuvent être installées afin de réaliser certaines tâches spécifiques.
+Par exemple **numpy** pour les traitements mathématique, **matplotlib** pour les graphiques ou **pandas** pour le traitement de tableau de données. Mais certaines librairies, notamment cartographiques, fonctionnent très mal sous Windows ou Mac OS. Linux est l'ami de Python... Si vous voulez tester Python, installez Anaconda qui permet de gérer facilement les dépendances entre librairies. Il est même fourni avec des outils graphiques pour faire des statistiques (et sans coder) comme Orange 3.
+
+C’est également un langage également très populaire en **machine learning**, grâce à la librairie scikitlearn.
+
+A noter que ce cours d’analyse de données va vous apprendre la régression, l’analyse en composante principale et la classification, qui sont des outils majeurs en machine learning. Nous n’utiliserons toutefois pas Python pour les réaliser.
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## Python
+
+
+&lt;img src="./images/2-Stat/python.png" width="100%" /&gt;
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn
+## Pour ce cours ?
+
+Nous utiliserons les outils suivants : 
+
+- Excel/Libre Office (conception des tableaux de données, analyse univariée, graphiques)
+- Philcarto ou Magrit pour la cartographie
+
+Si le temps le permet et pour ceux qui le souhaient, nous pourrons utiliser un logiciel de statistique pour faciliter certaines analyses univariées
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt; 
+
+---
+class: inverse, center, middle, animated, fadeIn  
+# Conclusion
+
+&lt;img src="./assets/css/graticules.png" STYLE="position:absolute; BOTTOM:30px; RIGHT:0px; WIDTH:150%;"/&gt;
+&lt;div class="my-footer-title "&gt;&lt;/div&gt; 
+
+---
+class: animated, fadeIn 
+## Concepts-clés 
+
+Le cartographe utilise de **l'information géographique**, localisable dans l'espace.
+- Il existe un vocabulaire propre aux données statistiques, qu'il est nécessaire de connaître.
+- Les données peuvent être regroupées selon plusieurs **propriétés**
+- Qu'il faut maîtriser, car les règles de la sémiologie graphique en **dépendent** !   
+
+Plusieurs types de tableaux existent et il est nécessaire de les reconnaître
+- Les tableaux élémentaires de données sont les plus courants, avec en ligne les individus et en colonnes leurs caractères
+- Les tableaux de contingence permettent de croiser des caractères
+- Les tableaux d'échanges sont très appréciées des géographes
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Université Paris 1 Panthéon Sorbonne - M1 2021-2022 : cartographie et statistique - Florian Bayer&lt;/span&gt;&lt;/div&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="assets/libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
