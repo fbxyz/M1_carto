@@ -1,8 +1,0 @@
-"0","source('https://github.com/fbxyz/M1_carto/blob/master/assets/functions.R')
-"
-"2","Error in source(""https://github.com/fbxyz/M1_carto/blob/master/assets/functions.R"") : 
-  https://github.com/fbxyz/M1_carto/blob/master/assets/functions.R:7:1: unexpected '<'
-6: 
-7: <
-   ^
-"
